@@ -41,7 +41,7 @@ def resize_image(image_path, max_size=(800, 600)):
         img.save(image_path, optimize=True, quality=85)
 
 @app.route('/api/cats', methods=['GET'])
-def get_cat():
+def get_cats():
     """Get all cats w/ optional filtering"""
     cats = Cat.query.all()
     return jsonify([cat.to_dict() for cat in cats])
@@ -89,11 +89,19 @@ def add_cat():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/uploads/<filename>')
+def uploaded_file(filename):
+    """Serve uploaded images"""
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+@app.route('/api/health')
+def health_check():
+    """Health check endpoint"""
+    return jsonify({'status': 'healthy'})
 
-
-
-
+# Create tables
+with app.app_context():
+    db.create_all()
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
