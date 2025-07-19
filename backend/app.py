@@ -3,6 +3,7 @@
 # Main Flask application entry point
 # Handles routes for uploading and retrieving cat sightings
 # ---------------------------------------
+
 import os
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
@@ -39,16 +40,60 @@ def resize_image(image_path, max_size=(800, 600)):
         img.thumbnail(max_size, Image.Resampling.LANCZOS)
         img.save(image_path, optimize=True, quality=85)
 
-@app.route('api/cats', methods=['GET'])
+@app.route('/api/cats', methods=['GET'])
 def get_cat():
     """Get all cats w/ optional filtering"""
     cats = Cat.query.all()
     return jsonify([cat.to_dict() for cat in cats])
 
-@app.route('api/cats', methods=['POST'])
+@app.route('/api/cats', methods=['POST'])
 def add_cat():
     """ Create a cat (new cat sighting)"""
+    try:
+        # file upload handling ... 
+        # Check if image file was sent
+        if 'image' not in request.files:
+            return jsonify({'error': 'No image file provided'}), 400
+        
+        file = request.files['image']  # Get the uploaded image
+
+        if file.filename == '':
+            return jsonify({'error': 'No file selected'}), 400
+
+        if not allowed_file(file.filename):
+            return jsonify({'error': 'File type not allowed.'}), 400
+
+        # Generate unique filename
+        filename = str(uuid.uuid4()) + '.' + file.filename.rsplit('.', 1)[1].lower()
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        
+        # Save and resize image
+        file.save(filepath)
+        resize_image(filepath)
+
+        # get cat data
+        name = request.form.get('name', '').strip()
+        description = request.form.get('description', '').strip()
+        latitude = float(request.form.get('latitude'))
+        longitude = float(request.form.get('longitude'))
+        bodega_name = request.form.get('bodega_name', '').strip()
+
+        # create new cat 
+        cat = Cat(name=name if name else None, description=description if description else None, latitude=latitude, longitude=longitude, image_url=f'/api/uploads/{filename}', bodega_name=bodega_name if bodega_name else None)
+
+        # add to database
+        db.session.add(cat)
+        db.session.commit()
+
+        return jsonify(cat.to_dict()), 201
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 
 
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
