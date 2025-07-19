@@ -20,6 +20,7 @@ class Cat(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def to_dict(self): 
+        # converts the database object to JSON
         return { 
             'id': self.id, 
             'name': self.name, 

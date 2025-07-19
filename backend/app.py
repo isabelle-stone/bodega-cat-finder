@@ -36,4 +36,16 @@ def allowed_file(filename):
 def resize_image(image_path, max_size=(800, 600)):
     """Resize image to reduce file size"""
 
-@app.route()
+@app.route('api/cats', methods=['GET'])
+def get_cat():
+    """Get all cats w/ optional filtering"""
+    cats = Cat.query.all()
+    return jsonify([cat.to_dict() for cat in cats])
+
+@app.route('api/cats', methods=['POST'])
+def add_cat():
+    """ Create a cat (new cat sighting)"""
+
+
+
+
