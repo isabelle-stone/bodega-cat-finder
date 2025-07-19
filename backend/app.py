@@ -35,6 +35,9 @@ def allowed_file(filename):
 
 def resize_image(image_path, max_size=(800, 600)):
     """Resize image to reduce file size"""
+    with Image.open(image_path) as img:
+        img.thumbnail(max_size, Image.Resampling.LANCZOS)
+        img.save(image_path, optimize=True, quality=85)
 
 @app.route('api/cats', methods=['GET'])
 def get_cat():
