@@ -6,14 +6,14 @@ __pycache__/
 # Flask uploads
 backend/uploads/
 
-# Node
+# node
 node_modules/
 .env
 
 # macOS system files
 .DS_Store
 
-# Logs and cache
+# logs and cache
 *.log
 
 # React build
