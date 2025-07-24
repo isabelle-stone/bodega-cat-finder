@@ -74,10 +74,14 @@ def add_cat():
         # get cat data
         name = request.form.get('name', '').strip()
         description = request.form.get('description', '').strip()
-        latitude = float(request.form.get('latitude'))
-        longitude = float(request.form.get('longitude'))
         bodega_name = request.form.get('bodega_name', '').strip()
 
+        try:
+            latitude = float(request.form.get('latitude'))
+            longitude = float(request.form.get('longitude'))
+        except (ValueError, TypeError):
+            return jsonify({'error': 'Invalid or missing latitude/longitude'}), 400
+        
         # create new cat 
         cat = Cat(name=name if name else None, description=description if description else None, latitude=latitude, longitude=longitude, image_url=f'/api/uploads/{filename}', bodega_name=bodega_name if bodega_name else None)
 
