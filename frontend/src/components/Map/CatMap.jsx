@@ -56,6 +56,25 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
         style={{ height: '400px', width: '100%', borderRadius: '12px' }}
         className="shadow-md"
         >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+
+            {cats.map(cat => (
+                <Marker
+                  key={cat.id}
+                  position={[cat.latitude, cat.longitude]}
+                  icon={catIcon}
+                  eventHandlers={{
+                    click: () => onCatClick && onCatClick(cat)
+                  }}
+                >
+                    <Popup className>
+
+                    </Popup>
+                </Marker>
+            ))}
 
         </MapContainer>
     )
