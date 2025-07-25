@@ -26,9 +26,38 @@ L.Icon.Default.mergeOptions({
     shadowUrl: new URL('leaflet/dist/images/marker-shadow.png', import.meta.url).href,
   });
 
-function CatMap() {
-    const [catLocations, setCatLocations] = useState([]);
+// New custom cat marker
+const catIcon = new L.Icon({
+    iconUrl: 'data:image/svg+xml;base64,' + btoa(`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
+        <circle cx="12" cy="12" r="10" fill="#f97316" stroke="#fff" stroke-width="2"/>
+        <text x="12" y="16" text-anchor="middle" font-size="12" fill="white">🐱</text>
+      </svg>
+    `),
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+  });
 
+function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
+    const formatDate = (dateString) => {
+        return new Date(dateString).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    };
+    return (
+        <MapContainer
+        center={center}
+        zoom={13}
+        scrollWheelZoom={true}
+        style={{ height: '400px', width: '100%', borderRadius: '12px' }}
+        className="shadow-md"
+        >
 
+        </MapContainer>
+    )
 
 }
