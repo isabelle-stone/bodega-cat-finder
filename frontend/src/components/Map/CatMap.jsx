@@ -11,10 +11,10 @@
  * Notes:
  * - Leaflet marker icon paths are manually patched for compatibility with Vite 
  */
-
-import React, { useState, useEffect } from 'react';
-import { Camera, MapPin, Heart, Plus, X } from 'lucide-react';
+import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapPin, Heart, Calendar } from 'lucide-react';
+import { catAPI } from '../../services/api';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -61,6 +61,7 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
+            { /* loop through cats */ }
             {cats.map(cat => (
                 <Marker
                   key={cat.id}
@@ -71,7 +72,44 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
                   }}
                 >
                     <Popup className>
+                        <div className="p-2 min-w-48">
+                            {/* Cat image */}
+                            <div className="mb-3">
+                                <img
+                                  src={catAPI.getImageUrl(cat.image_url)}
+                                  alt={cat.name || 'Bodega Cat'}
+                                  className="w-full h-32 object-cover rounded-lg"
+                                />
+                            </div>
 
+                            {/* Cat Info */}
+                            <div className="space-y-2">
+                                <div className="flex items-start justify-between">
+                                    <h3 className="front-semibold text-gray-800">
+                                        {cat.name || 'Cat! (name unknown)'}
+                                    </h3>
+                                    <Heart size={16} className="text-red-400 fill-current" />
+                                </div>
+
+                                {cat.bodega_name && (
+                                    <p className="text-sm text-orange-600 front medium flex items-center gap-1">
+                                        <MapPin size={12} />
+                                        {cat.bodega_name}
+                                    </p>
+                                )}
+
+                                {cat.description && (
+                                    <p className="text-sm text-gray-600 line-clamp-2">
+                                        {cat.description}
+                                    </p>
+                                )}
+                                
+                                <div className="flex items-ceter gap-1 text-xs text-gray-500 pt-2 border-t">
+                                    <Calendar size={12} />
+                                    Spotted {formatDate(cat.created_at)}
+                                </div>
+                            </div>
+                        </div>
                     </Popup>
                 </Marker>
             ))}
@@ -80,3 +118,4 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
     )
 
 }
+export default CatMap;
