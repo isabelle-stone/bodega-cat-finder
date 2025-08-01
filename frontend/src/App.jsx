@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import CatMap from './components/Map/CatMap.jsx'
 import { catAPI } from './services/api.jsx'
+import AddCatForm from './components/Forms/AddCatForm.jsx';
+
 
 
 function App() {
   const [cats, setCats] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showAddForm, setShowAddForm] = useState(false);
+
 
   useEffect(() => {
     const fetchCats = async () => {
@@ -15,7 +19,7 @@ function App() {
         setLoading(true);
         const catsData = await catAPI.getAllCats();
         setCats(catsData);
-        console.log("Fetched cats:", catsData); 
+        console.log("Fetched cats:", catsData);
       } catch (err) {
         console.error('Error fetching cats: ', err);
         setError(err.message);
@@ -63,12 +67,32 @@ function App() {
           </p>
         </div>
       </header>
-      <main className="max-w-7xl mx-auto px-4 py-6">
+
+
+
+      <main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
         <CatMap
           cats={cats}
           onCatClick={handleCatClick}
           center={[40.7128, -74.0060]}
         />
+
+        <button
+          onClick={() => setShowAddForm(prev => !prev)}
+          className="mt-6 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg shadow"
+        >
+          {showAddForm ? 'Cancel' : 'Add a Cat'}
+        </button>
+
+        {showAddForm && (
+          <AddCatForm
+            onCatAdded={(newCat) => {
+              setCats(prev => [...prev, newCat]);
+              setShowAddForm(false);
+            }}
+            onCancel={() => setShowAddForm(false)}
+          />
+        )}
       </main>
     </div>
   );
