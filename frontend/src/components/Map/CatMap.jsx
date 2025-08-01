@@ -72,13 +72,13 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
                   }}
                 >
                     <Popup className>
-                        <div className="p-2 min-w-48 max-w-[250px] rounded-xl bg-white shadow-md">
+                        <div className="p-2 min-w-48 max-w-[250px] max-h-[300px] overflow-y-auto overflow-x-hidden rounded-xl bg-white shadow-md scroll-smooth">
                             {/* Cat image */}
                             <div className="mb-3">
                                 <img
                                   src={catAPI.getImageUrl(cat.image_url)}
                                   alt={cat.name || 'Bodega Cat'}
-                                  className="w-full max-w-[200px] h-32 object-cover rounded-lg mx-auto"
+                                  className="w-full max-w-full h-auto max-h-[150px] object-cover rounded-lg mx-auto"
                                 />
                             </div>
 
