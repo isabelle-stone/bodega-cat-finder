@@ -19,7 +19,7 @@ app.config.from_object(Config)
 
 # Initialize extensions
 db.init_app(app)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Ensure upload directory exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -108,4 +108,4 @@ with app.app_context():
     db.create_all()
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5050)

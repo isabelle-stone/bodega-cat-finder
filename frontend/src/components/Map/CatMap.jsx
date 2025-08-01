@@ -85,14 +85,14 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
                             {/* Cat Info */}
                             <div className="space-y-2">
                                 <div className="flex items-start justify-between">
-                                    <h3 className="front-semibold text-gray-800">
+                                    <h3 className="font-semibold text-gray-800">
                                         {cat.name || 'Cat! (name unknown)'}
                                     </h3>
                                     <Heart size={16} className="text-red-400 fill-current" />
                                 </div>
 
                                 {cat.bodega_name && (
-                                    <p className="text-sm text-orange-600 front medium flex items-center gap-1">
+                                    <p className="text-sm text-orange-600 font-medium flex items-center gap-1">
                                         <MapPin size={12} />
                                         {cat.bodega_name}
                                     </p>
