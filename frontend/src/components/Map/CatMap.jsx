@@ -50,11 +50,11 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
     };
     return (
         <MapContainer
-        center={center}
-        zoom={13}
-        scrollWheelZoom={true}
-        style={{ height: '400px', width: '100%', borderRadius: '12px' }}
-        className="shadow-md"
+            center={center}
+            zoom={13}
+            scrollWheelZoom={true}
+            style={{ height: '400px', width: '100%', borderRadius: '12px' }}
+            className="shadow-md"
         >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -71,40 +71,85 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
                     click: () => onCatClick && onCatClick(cat)
                   }}
                 >
-                    <Popup className>
-                        <div className="p-2 min-w-48 max-w-[250px] max-h-[300px] overflow-y-auto overflow-x-hidden rounded-xl bg-white shadow-md scroll-smooth">
-                            {/* Cat image */}
-                            <div className="mb-3">
+                    <Popup >
+                        <div style={{
+                            width: '250px',
+                            maxWidth: '250px',
+                            padding: '8px',
+                            fontFamily: 'system-ui, -apple-system, sans-serif'
+                        }}>
+                            {/* Cat image & sizing */}
+                            <div style={{marginBottom: '12px' }}>
                                 <img
                                   src={catAPI.getImageUrl(cat.image_url)}
                                   alt={cat.name || 'Bodega Cat'}
-                                  className="w-full max-w-full h-auto max-h-[150px] object-cover rounded-lg mx-auto"
+                                  style={{
+                                    width: '100%',
+                                    height: '150px',
+                                    objectFit: 'conatin',
+                                    borderRadius: '8px',
+                                    display: 'block',
+                                    maxWidth: '100%'
+                                  }}
                                 />
                             </div>
 
                             {/* Cat Info */}
-                            <div className="space-y-2">
-                                <div className="flex items-start justify-between">
-                                    <h3 className="font-semibold text-gray-800">
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                                    <h3 style={{
+                                        fontWeight: '600',
+                                        color: '#1f2937',
+                                        margin: '0',
+                                        fontSize: '16px',
+                                        lineHeight: '1.2'
+                                    }}>
                                         {cat.name || 'Cat! (name unknown)'}
                                     </h3>
-                                    <Heart size={16} className="text-red-400 fill-current" />
+                                    <Heart size={16} style={{ color: '#f87171', fill: 'currentColor' }}  />
                                 </div>
 
                                 {cat.bodega_name && (
-                                    <p className="text-sm text-orange-600 font-medium flex items-center gap-1">
+                                    <p style={{
+                                        fontSize: '14px',
+                                        color: '#de6b2f',
+                                        fontWeight: '500',
+                                        margin: '0',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '4px'
+
+                                    }}>
                                         <MapPin size={12} />
                                         {cat.bodega_name}
                                     </p>
                                 )}
 
                                 {cat.description && (
-                                    <p className="text-sm text-gray-600 line-clamp-2">
+                                    <p style={{
+                                        fontSize: '14px',
+                                        color: '#344761',
+                                        margin: '0',
+                                        lineHeight: '1.4',
+                                        overflow: 'hidden',
+                                        display: '-webkit-box',
+                                        WebkitLineClamp: 2,
+                                        WebkitBoxOrient: 'vertical'
+                                    }}>
                                         {cat.description}
                                     </p>
                                 )}
                                 
-                                <div className="flex items-center gap-1 text-xs text-gray-500 pt-2 border-t">
+                                <div style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '4px',
+                                    fontSize: '12px',
+                                    color: '#5b5e73',
+                                    paddingTop: '8px',
+                                    borderTop: '1px solid #e0dfeb',
+                                    margin: '0'
+                                }}>
                                     <Calendar size={12} />
                                     Spotted {formatDate(cat.created_at)}
                                 </div>
@@ -115,7 +160,7 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
             ))}
 
         </MapContainer>
-    )
+    );
 
 }
 export default CatMap;
