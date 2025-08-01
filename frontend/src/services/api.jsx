@@ -4,7 +4,7 @@
  * api.jsx
  */
 
-const API_BASE = 'http://localhost:500/api';
+const API_BASE = 'http://localhost:5000/api';
 
 export const catAPI = {
     // Get all cats..
