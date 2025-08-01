@@ -72,13 +72,13 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
                   }}
                 >
                     <Popup className>
-                        <div className="p-2 min-w-48">
+                        <div className="p-2 min-w-48 max-w-[250px] rounded-xl bg-white shadow-md">
                             {/* Cat image */}
                             <div className="mb-3">
                                 <img
                                   src={catAPI.getImageUrl(cat.image_url)}
                                   alt={cat.name || 'Bodega Cat'}
-                                  className="w-full h-32 object-cover rounded-lg"
+                                  className="w-full max-w-[200px] h-32 object-cover rounded-lg mx-auto"
                                 />
                             </div>
 
@@ -104,7 +104,7 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
                                     </p>
                                 )}
                                 
-                                <div className="flex items-ceter gap-1 text-xs text-gray-500 pt-2 border-t">
+                                <div className="flex items-center gap-1 text-xs text-gray-500 pt-2 border-t">
                                     <Calendar size={12} />
                                     Spotted {formatDate(cat.created_at)}
                                 </div>
