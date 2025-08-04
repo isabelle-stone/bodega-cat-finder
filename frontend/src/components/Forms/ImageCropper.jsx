@@ -1,7 +1,8 @@
 /**
  * ImageCropper.jsx
- * Fixed version with proper dragging and sizing
+ * Fixed version with dragging and sizing
  */
+
 import React, { useState, useRef, useEffect } from 'react';
 import { X, Check, Move } from 'lucide-react';
 
@@ -12,7 +13,7 @@ function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
     width: 200,
     height: 150
   });
-  const aspectRatio = 1 / 1; // change maybe
+  const aspectRatio = 247 / 146; // change maybe
   const [isDragging, setIsDragging] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
   const [resizeHandle, setResizeHandle] = useState(null);
@@ -211,7 +212,7 @@ function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
         color: 'white',
         fontSize: '18px'
       }}>
-        ERROR: No image source provided to cropper!
+        ERROR: No image source provided to cropper
         <button onClick={onCancel} style={{ marginLeft: '20px', padding: '10px' }}>
           Close
         </button>

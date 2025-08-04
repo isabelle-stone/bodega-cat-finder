@@ -1,34 +1,14 @@
 import { useState, useEffect } from 'react'
-import './App.css'
 import CatMap from './components/Map/CatMap.jsx'
-import { catAPI } from './services/api.jsx'
+import { useCats } from './hooks/useCats';
+import './App.css'
 import AddCatForm from './components/Forms/AddCatForm.jsx';
 
 
-
 function App() {
-  const [cats, setCats] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { cats, loading, error, addCat } = useCats();
+
   const [showAddForm, setShowAddForm] = useState(false);
-
-
-  useEffect(() => {
-    const fetchCats = async () => {
-      try {
-        setLoading(true);
-        const catsData = await catAPI.getAllCats();
-        setCats(catsData);
-        console.log("Fetched cats:", catsData);
-      } catch (err) {
-        console.error('Error fetching cats: ', err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCats();
-  }, []);
 
   const handleCatClick = (cat) => {
     console.log('Cat clicked: ', cat);
@@ -54,7 +34,6 @@ function App() {
     );
   }
 
-
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm boarder-b">
@@ -67,8 +46,6 @@ function App() {
           </p>
         </div>
       </header>
-
-
 
       <main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
         <CatMap
@@ -86,9 +63,13 @@ function App() {
 
         {showAddForm && (
           <AddCatForm
-            onCatAdded={(newCat) => {
-              setCats(prev => [...prev, newCat]);
-              setShowAddForm(false);
+            onCatAdded={async (newCat) => {
+              const result = await addCat(newCat);
+              if (result.success) {
+                setShowAddForm(false);
+              } else {
+                alert("Failed to add cat: " + result.error);
+              }
             }}
             onCancel={() => setShowAddForm(false)}
           />
