@@ -16,7 +16,7 @@ import Header from '../components/Layout/Header';
 
 function Home() {
   const { cats, loading, error } = useCats();
-  const [viewMode, setViewMode] = useState('map'); // 'map' or 'grid'
+  const [viewMode, setViewMode] = useState('map');
 
   const handleCatClick = (cat) => {
     console.log('Cat clicked:', cat);
@@ -49,38 +49,37 @@ function Home() {
 
       {/* Stats bar */}
       <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
-            <p className="text-gray-600">
-              Found {cats.length} cats in NYC bodegas!
-            </p>
+        <div className="max-w-7xl mx-auto px-4 py-3" style={{ textAlign: 'center' }}>
+          <p className="text-gray-600">
+            Found {cats.length} cats in NYC bodegas!
+          </p>
 
-            {/* View toggle */}
-            <div className="flex bg-gray-100 rounded-lg p-1">
-              <button
-                onClick={() => setViewMode('map')}
-                className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  viewMode === 'map'
-                    ? 'bg-white text-gray-900 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                <Map size={16} />
-                Map
-              </button>
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  viewMode === 'grid'
-                    ? 'bg-white text-gray-900 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                <Grid size={16} />
-                Grid
-              </button>
-            </div>
+          {/* View toggle */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '8px' }}>
+            <button
+              onClick={() => setViewMode('map')}
+              className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                viewMode === 'map'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <Map size={16} />
+              Map
+            </button>
+            <button
+              onClick={() => setViewMode('grid')}
+              className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                viewMode === 'grid'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <Grid size={16} />
+              Grid
+            </button>
           </div>
+
         </div>
       </div>
 

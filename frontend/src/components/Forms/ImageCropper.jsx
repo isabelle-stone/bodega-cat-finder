@@ -7,13 +7,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { X, Check, Move } from 'lucide-react';
 
 function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
+  const aspectRatio = 247 / 146;
   const [cropStyle, setCropStyle] = useState({
     left: 50,
     top: 50,
     width: 200,
-    height: 150
+    height: 200 / aspectRatio
   });
-  const aspectRatio = 247 / 146; // change maybe
   const [isDragging, setIsDragging] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
   const [resizeHandle, setResizeHandle] = useState(null);
@@ -258,19 +258,6 @@ function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
         >
           <X size={24} />
         </button>
-      </div>
-
-      {/* Debug Info */}
-      <div style={{
-        padding: '10px',
-        backgroundColor: '#1f2937',
-        color: 'white',
-        fontSize: '12px',
-        fontFamily: 'monospace'
-      }}>
-        DEBUG: Image source: {imageSrc ? imageSrc.substring(0, 100) + '...' : 'NULL'}<br/>
-        Image loaded: {imageLoaded ? 'YES' : 'NO'}<br/>
-        Image error: {imageError ? 'YES' : 'NO'}
       </div>
 
       {/* Image Container */}
