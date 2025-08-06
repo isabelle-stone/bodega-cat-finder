@@ -4,7 +4,7 @@
  * api.jsx
  */
 
-const API_BASE = 'https://bodega-cat-api.onrender.com/api';
+const API_BASE = 'https://bodega-cat-finder-wb0q.onrender.com/api';
 
 export const catAPI = {
     
