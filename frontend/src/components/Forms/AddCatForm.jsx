@@ -130,7 +130,7 @@ function AddCatForm({ onCatAdded, onCancel }) {
       // Submit to API
       const result = await catAPI.addCat(submitData);
       
-      // Success!
+      // Success..
       onCatAdded && onCatAdded(result);
       
       // Reset form
@@ -156,7 +156,7 @@ function AddCatForm({ onCatAdded, onCancel }) {
         maxWidth: '500px',
         margin: '0 auto',
         padding: '24px',
-        backgroundColor: 'white',
+        backgroundColor: '#FFCB61',
         borderRadius: '12px',
         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
       }}>
@@ -167,7 +167,7 @@ function AddCatForm({ onCatAdded, onCancel }) {
           textAlign: 'center',
           color: '#182540'
         }}>
-          Add a Bodega Cat
+          Add a Cat
         </h2>
 
         {error && (
@@ -200,7 +200,7 @@ function AddCatForm({ onCatAdded, onCancel }) {
                 border: '2px dashed #d1d5db',
                 borderRadius: '8px',
                 cursor: 'pointer',
-                backgroundColor: '#f9fafb',
+                backgroundColor: '#fce3b1',
                 transition: 'all 0.2s'
               }}>
                 <Camera size={40} style={{ color: '#6b7280', marginBottom: '8px' }} />
@@ -276,7 +276,8 @@ function AddCatForm({ onCatAdded, onCancel }) {
                 padding: '10px',
                 border: '1px solid #d1d5db',
                 borderRadius: '6px',
-                fontSize: '14px'
+                fontSize: '14px',
+                backgroundColor: '#fce8c0'
               }}
             />
           </div>
@@ -297,7 +298,8 @@ function AddCatForm({ onCatAdded, onCancel }) {
                 padding: '10px',
                 border: '1px solid #d1d5db',
                 borderRadius: '6px',
-                fontSize: '14px'
+                fontSize: '14px',
+                backgroundColor: '#fce8c0'
               }}
             />
           </div>
@@ -319,7 +321,8 @@ function AddCatForm({ onCatAdded, onCancel }) {
                 border: '1px solid #d1d5db',
                 borderRadius: '6px',
                 fontSize: '14px',
-                resize: 'vertical'
+                resize: 'vertical',
+                backgroundColor: '#fce8c0'
               }}
             />
           </div>
@@ -342,7 +345,8 @@ function AddCatForm({ onCatAdded, onCancel }) {
                   padding: '10px',
                   border: '1px solid #d1d5db',
                   borderRadius: '6px',
-                  fontSize: '14px'
+                  fontSize: '14px',
+                  backgroundColor: '#fce8c0'
                 }}
               />
               <input
@@ -357,7 +361,8 @@ function AddCatForm({ onCatAdded, onCancel }) {
                   padding: '10px',
                   border: '1px solid #d1d5db',
                   borderRadius: '6px',
-                  fontSize: '14px'
+                  fontSize: '14px',
+                  backgroundColor: '#fce8c0'
                 }}
               />
             </div>

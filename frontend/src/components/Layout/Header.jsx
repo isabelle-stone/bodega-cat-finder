@@ -1,16 +1,14 @@
 /**
  * Header.jsx
  * ----------
- * App header
+ * App header (with navigation buttons moved to individual pages)
  */
 
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Plus, Map } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
   const navigate = useNavigate();
-  const location = useLocation();
 
   return (
     <header className="bg-white shadow-sm border-b">
@@ -21,31 +19,15 @@ function Header() {
             onClick={() => navigate('/')}
           >
             <h1 className="text-2xl font-bold" style={{ color: '#FFCB61', textShadow:  ` -1px -1px 0 #00243b, 1px -1px 0 #00243b, -1px  1px 0 #00243b, 1px  1px 0 #00243b `}}>
-              Bodega Cats NYC
+              NYC Bodega Cats!
             </h1>
-            <p className="text-sm text-gray-600">
-              Discover NYC's beloved bodega cats
+            <p>
+              The rats dont run this city, the bodega cats do.
             </p>
-          </div>
-
-          <div className="flex items-center gap-4">
-            {location.pathname !== '/' && (
-              <button
-                onClick={() => navigate('/')}
-                className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800"
-              >
-                <Map size={20} />
-                View Map
-              </button>
-            )}
             
-            <button
-              onClick={() => navigate('/add')}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2 transition-colors"
-            >
-              <Plus size={20} />
-              Spot a Cat
-            </button>
+            <p>
+            These cats are on the clock! Be kind, be gentle, and thank the humans who share their space.
+            </p>
           </div>
         </div>
       </div>

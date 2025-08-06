@@ -278,11 +278,11 @@ function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
             Failed to load image<br/>
             <div style={{ fontSize: '14px', marginTop: '10px', color: '#fbbf24' }}>
               This appears to be a HEIC/HEIF file (iPhone format)<br/>
-              Browsers don't support this format natively.<br/><br/>
+              Browsers don't support this format natively :( <br/><br/>
               <strong>Solutions:</strong><br/>
-              • Convert to JPG/PNG first<br/>
-              • Use iPhone: Settings → Camera → Formats → Most Compatible<br/>
-              • Try a different photo
+              • Convert to JPG/PNG first (https://cloudconvert.com/jpg-converter)<br/>
+              • Try a different photo <br/>
+              • Text me this might be a bug grrr
             </div>
           </div>
         ) : (

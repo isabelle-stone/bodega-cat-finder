@@ -39,7 +39,7 @@ function AddCat() {
                 <div className="max-w-7xl mx-auto px-4 py-3">
                     <button
                       onClick={() => navigate('/')}
-                      className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                      className="flex items-center gap-2 transition-colors"
                     >
                         <ArrowLeft size={16} />
                         Back to Map
@@ -52,11 +52,11 @@ function AddCat() {
                 <div className="bg-white rounded-lg shadow-sm p-6">
                 <div className="mb-6">
                     <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                    Tell us about this cat
+                    Tell us about this cat!!
                     </h2>
                     <p className="text-gray-600 text-sm">
-                    Upload a photo and share details about where you found this adorable bodega cat.
-                    All fields except the photo are optional, but more details help other cat lovers!
+                    Upload a photo and share details about where you found the kitty.
+                    All fields except the photo are optional :)
                     </p>
                 </div>
 
@@ -69,11 +69,11 @@ function AddCat() {
                 {/* Tips Section */}
                 <div className="mt-8 bg-orange-50 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-orange-900 mb-3">
-                    Tips...
+                    Tips & Tricks!!
                 </h3>
                 <ul className="text-orange-800 text-sm space-y-2">
-                    <li>• You'll be able to crop the photo after uploading</li>
-                    <li>• Respect the cat and store owner!!! Ask permission if needed</li>
+                    <li> You'll be able to crop the photo after uploading</li>
+                    <li> Respect the cat and store owner!!! Ask permission if needed</li>
                 </ul>
                 </div>
             </main>
