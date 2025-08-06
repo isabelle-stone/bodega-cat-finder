@@ -4,7 +4,7 @@
  * api.jsx
  */
 
-const API_BASE = 'http://127.0.0.1:5050/api';
+const API_BASE = 'https://bodega-cat-api.onrender.com/api';
 
 export const catAPI = {
     
