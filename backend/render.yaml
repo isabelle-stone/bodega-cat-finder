@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: bodega-cat-api
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: UPLOAD_FOLDER
+        value: static/uploads
