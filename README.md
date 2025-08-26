@@ -1,7 +1,7 @@
 # bodega-cat-finder
 A full-stack web application for discovering and sharing NYC's beloved bodega cats. Users can upload photos, mark locations, and explore an interactive map of cat sightings across the city.
 
-# LINK:
+# Link:
 https://nyc-bodega-cats.netlify.app/
 
 # Features
