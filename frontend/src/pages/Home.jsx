@@ -106,7 +106,7 @@ function Home() {
               center={[40.7128, -74.0060]}
             />
             
-            {/* Recent Cats Below Map - Now with colorful blocks */}
+            {/* Recent Cats Below Map */}
             <div className="bg-white rounded-xl shadow-lg p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-gray-800">
@@ -137,7 +137,7 @@ function Home() {
             </div>
           </div>
         ) : (
-          /* Grid View - now using RecentCatsGrid too! */
+          /* Grid View */
           <div className="space-y-6">
             <div className="bg-white rounded-xl shadow-lg p-6">
               <div className="flex items-center justify-between mb-6">

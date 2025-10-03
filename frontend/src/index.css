@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Libre Baskerville', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light;
@@ -11,7 +11,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Keep your existing link styles */
 a {
   font-weight: 500;
   color: #646cff;
@@ -21,7 +20,6 @@ a:hover {
   color: #00243b;
 }
 
-/* Libre Baskerville for headings only */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Libre Baskerville', serif;
   line-height: 1.2;
@@ -33,7 +31,6 @@ h1 {
   line-height: 1.1;
 }
 
-/* Keep your existing button styles but improve them slightly */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -57,7 +54,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Keep your existing body background */
 html, body {
   background-color: #8fc1e4;  
   margin: 0;
@@ -67,14 +63,12 @@ html, body {
   display: block;
 }
 
-/* Add some nice improvements without breaking things */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Make everything more mobile-friendly */
 @media (max-width: 768px) {
   h1 {
     font-size: 2rem;
@@ -90,7 +84,6 @@ html, body {
   }
 }
 
-/* Smooth animations */
 * {
   box-sizing: border-box;
 }

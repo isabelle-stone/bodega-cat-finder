@@ -11,24 +11,58 @@ function Header() {
   const navigate = useNavigate();
 
   return (
-    <header className="bg-white shadow-sm border-b">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <div 
-            className="cursor-pointer"
-            onClick={() => navigate('/')}
-          >
-            <h1 className="text-2xl font-bold" style={{ color: '#FFCB61', textShadow:  ` -1px -1px 0 #00243b, 1px -1px 0 #00243b, -1px  1px 0 #00243b, 1px  1px 0 #00243b `}}>
-              NYC Bodega Cats!
-            </h1>
-            <p>
-              The rats dont run this city, the bodega cats do.
-            </p>
-            
-            <p>
-            These cats are on the clock! Be kind, be gentle, and thank the humans who share their space.
-            </p>
-          </div>
+    <header style={{
+      background: 'linear-gradient(135deg, #8fc1e4 0%, #a8d5e8 100%)',
+      padding: '40px 20px',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+    }}>
+      <div style={{
+        maxWidth: '900px',
+        margin: '0 auto',
+        background: 'white',
+        borderRadius: '20px',
+        padding: '40px 32px',
+        textAlign: 'center'  
+      }}>
+        <div 
+          onClick={() => navigate('/')}
+          style={{ 
+            cursor: 'pointer',
+          }}
+        >
+          <h1 style={{ 
+            color: '#FFCB61', 
+            textShadow: '-1px -1px 0 #00243b, 1px -1px 0 #00243b, -1px 1px 0 #00243b, 1px 1px 0 #00243b',
+            fontFamily: "'Libre Baskerville', serif",
+            fontSize: 'clamp(2.5rem, 6vw, 3.5rem)',
+            lineHeight: '1.2',
+            marginBottom: '20px',
+            fontWeight: '700'
+          }}>
+            NYC Bodega Cats!
+          </h1>
+          
+          <p style={{ 
+            marginBottom: '16px',
+            fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
+            color: '#00243b',
+            fontWeight: '600',
+            lineHeight: '1.4'
+          }}>
+            The rats don't run this city, the bodega cats do.
+          </p>
+          
+          <p style={{ 
+            fontSize: 'clamp(0.9rem, 2vw, 1.05rem)',
+            color: '#6C757D',
+            lineHeight: '1.6',
+            fontWeight: '400',
+            fontStyle: 'italic',  // ITALICIZED!
+            maxWidth: '650px',
+            margin: '0 auto'
+          }}>
+            <em>These cats are on the clock! Be kind, be gentle, and thank the humans who share their space.</em>
+          </p>
         </div>
       </div>
     </header>
