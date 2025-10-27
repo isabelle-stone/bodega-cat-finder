@@ -296,7 +296,8 @@ function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
               borderRadius: '8px',
               overflow: 'hidden',
               backgroundColor: '#f3f4f6',
-              display: 'inline-block'
+              display: 'inline-block',
+              touchAction: 'none'
             }}
           >
             <img
