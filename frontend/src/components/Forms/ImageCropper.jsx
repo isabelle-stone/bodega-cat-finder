@@ -235,6 +235,12 @@ function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
       }}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
+      onTouchMove={(e) => {
+        const touch = e.touches[0];
+        const syntheticEvent = { clientX: touch.clientX, clientY: touch.clientY };
+        handleMouseMove(syntheticEvent);
+      }}
+      onTouchEnd={handleMouseUp}
     >
       {/* Header */}
       <div style={{
@@ -348,6 +354,7 @@ function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
                     justifyContent: 'center'
                   }}
                   onMouseDown={handleMouseDown}
+                  onTouchStart={handleMouseDown}
                 >
                   <Move size={24} color="#f97316" style={{ opacity: 0.8 }} />
                   
@@ -364,6 +371,7 @@ function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
                       borderRadius: '2px'
                     }}
                     onMouseDown={(e) => handleResizeStart('nw', e)}
+                    onTouchStart={(e) => handleResizeStart('nw', e)}
                   />
                   <div
                     style={{
@@ -377,6 +385,7 @@ function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
                       borderRadius: '2px'
                     }}
                     onMouseDown={(e) => handleResizeStart('ne', e)}
+                    onTouchStart={(e) => handleResizeStart('ne', e)}
                   />
                   <div
                     style={{
@@ -390,6 +399,7 @@ function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
                       borderRadius: '2px'
                     }}
                     onMouseDown={(e) => handleResizeStart('sw', e)}
+                    onTouchStart={(e) => handleResizeStart('sw', e)}
                   />
                   <div
                     style={{
@@ -403,6 +413,7 @@ function ImageCropper({ imageSrc, onCropComplete, onCancel }) {
                       borderRadius: '2px'
                     }}
                     onMouseDown={(e) => handleResizeStart('se', e)}
+                    onTouchStart={(e) => handleResizeStart('se', e)}
                   />
                 </div>
               </>
