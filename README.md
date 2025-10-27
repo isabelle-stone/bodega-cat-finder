@@ -2,7 +2,7 @@
 A full-stack web application for discovering and sharing NYC's beloved bodega cats. Users can upload photos, mark locations, and explore an interactive map of cat sightings across the city.
 
 # Link:
-https://nyc-bodega-cats.netlify.app/
+https://nycbodegacats.netlify.app/
 
 # Features
 - Interactive Map: Explore cat locations using Leaflet.js with custom markers
