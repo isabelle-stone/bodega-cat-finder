@@ -11,6 +11,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -32,16 +36,16 @@ h1 {
 }
 
 button {
-  padding: 1rem 1rem 1rem 1rem;
+  padding: clamp(8px, 2vw, 16px) clamp(12px, 3vw, 24px);
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 600;
   font-family: 'Inter', inherit;
   background-color: #FFCB61;
   cursor: pointer;
   transition: all 0.25s ease;
+  min-height: 44px;
 }
 
 button:hover {
@@ -62,6 +66,7 @@ html, body {
   min-height: 100vh;
   width: 100%;
   display: block;
+  overflow-x: hidden;
 }
 
 .container {
@@ -93,8 +98,48 @@ html {
   scroll-behavior: smooth;
 }
 
-.header-container {
-  max-width: 900px !important;
-  width: 900px !important;
-  min-width: 900px !important;
+
+/* Mobile-first media queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  /* Stack buttons vertically on mobile */
+  .mobile-stack {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  /* Hide/show elements on mobile */
+  .desktop-only {
+    display: none !important;
+  }
+  
+  /* Full width on mobile */
+  .mobile-full-width {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Responsive grid */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+@media (max-width: 480px) {
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
 }

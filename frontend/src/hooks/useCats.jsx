@@ -17,7 +17,9 @@ export function useCats() {
       setLoading(true);
       setError(null);
       const data = await catAPI.getAllCats();
-      setCats(data);
+      const sortedCats = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+      setCats(sortedCats);
     } catch (err) {
       setError(err.message);
       console.error('Error fetching cats: ', err);

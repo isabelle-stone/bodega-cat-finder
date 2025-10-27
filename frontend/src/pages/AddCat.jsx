@@ -37,7 +37,7 @@ function AddCat() {
             <Header />
             {/* Breadcrumb nav */}
             <div className="bg-white border-b" style={{ marginTop: '20px' }}>
-                <div style={{ maxWidth: '900px', margin: '0 auto', padding: '12px 16px' }}>
+                <div style={{ maxWidth: 'min(90vw, 900px)', margin: '0 auto', padding: '12px 16px' }}>
                     <button
                       onClick={() => navigate('/')}
                       className="flex items-center gap-2 transition-colors"
@@ -49,7 +49,7 @@ function AddCat() {
             </div>
 
             {/* Main Content */}
-            <main className="max-w-2xl mx-auto px-4 py-8">
+            <main style={{ maxWidth: 'min(90vw, 900px)', margin: '0 auto', padding: 'clamp(12px, 3vw, 24px)', paddingTop: 'clamp(24px, 6vw, 32px)' }}>
                 <div className="bg-white rounded-lg shadow-sm p-6">
                 <div className="mb-6">
                     <h2 className="text-lg font-semibold text-gray-900 mb-2">

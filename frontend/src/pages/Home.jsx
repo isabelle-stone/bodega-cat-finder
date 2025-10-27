@@ -51,7 +51,7 @@ function Home() {
 
       {/* Stats bar */}
       <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3" style={{ textAlign: 'center' }}>
+        <div style={{ maxWidth: 'min(90vw, 900px)', margin: '0 auto', padding: 'clamp(12px, 3vw, 24px) clamp(12px, 3vw, 16px)', textAlign: 'center' }}>
           <p className="text-gray-600">
             Found {cats.length} cats in NYC bodegas!
           </p>
@@ -96,7 +96,7 @@ function Home() {
       </div>
 
       {/* Main content */}
-      <main className="max-w-7xl mx-auto px-4 py-6" style={{ marginTop: '20px' }}>
+      <main style={{ maxWidth: 'min(90vw, 900px)', margin: '20px auto 0', padding: '0 clamp(12px, 3vw, 24px)' }}>
         {viewMode === 'map' ? (
           /* Map */
           <div className="space-y-6">
@@ -126,7 +126,7 @@ function Home() {
                 <RecentCatsGrid 
                   cats={cats} 
                   onCatClick={handleCatClick}
-                  limit={9}
+                  limit={5}
                 />
               ) : (
                 <div className="text-center py-12">

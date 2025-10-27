@@ -47,7 +47,7 @@ function CatMap({ cats, onCatClick, center = [40.7128, -74.006] }) {
             center={center}
             zoom={13}
             scrollWheelZoom={true}
-            style={{ height: '400px', width: '100%', borderRadius: '12px' }}
+            style={{ height: '400px', width: '70%', maxWidth: '70%', borderRadius: '12px', margin: '0 auto' }}
             className="shadow-md"
         >
             <TileLayer

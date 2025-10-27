@@ -13,15 +13,17 @@ function Header() {
   return (
     <header style={{
       background: 'linear-gradient(135deg, #8fc1e4 0%, #a8d5e8 100%)',
-      padding: '40px 20px',
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+      padding: 'clamp(20px, 4vw, 40px) clamp(12px, 3vw, 20px)',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      overflow: 'hidden'
     }}>
-      <div className="header-container" style={{
-        maxWidth: '900px !important',
+      <div style={{
+        maxWidth: 'min(90vw, 900px)',
         margin: '0 auto',
+        width: '100%',
         background: 'white',
-        borderRadius: '20px',
-        padding: '40px 32px',
+        borderRadius: 'clamp(12px, 3vw, 20px)',
+        padding: 'clamp(20px, 4vw, 40px) clamp(16px, 4vw, 32px)',
         textAlign: 'center'  
         
       }}>
@@ -37,14 +39,14 @@ function Header() {
             fontFamily: "'Libre Baskerville', serif",
             fontSize: 'clamp(2.5rem, 6vw, 3.5rem)',
             lineHeight: '1.2',
-            marginBottom: '20px',
+            marginBottom: 'clamp(12px, 3vw, 20px)',
             fontWeight: '700'
           }}>
             NYC Bodega Cats!
           </h1>
           
           <p style={{ 
-            marginBottom: '16px',
+            marginBottom: 'clamp(8px, 2vw, 16px)',
             fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
             color: '#00243b',
             fontWeight: '600',
@@ -60,7 +62,8 @@ function Header() {
             fontWeight: '400',
             fontStyle: 'italic',  // ITALICIZED!
             maxWidth: '650px',
-            margin: '0 auto'
+            margin: '0 auto',
+            padding: '0 clamp(8px, 2vw, 16px)'
           }}>
             <em>These cats are on the clock! Be kind, be gentle, and thank the humans who share their space.</em>
           </p>
