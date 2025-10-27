@@ -15,8 +15,8 @@ import { useCats } from '../hooks/useCats';
 function AddCat() {
     const navigate = useNavigate();
     const { addCat } = useCats();
-    const handleCatAdded = async (newCat) => {
-        const result = await addCat(newCat);
+    const handleCatAdded = async (formData) => {
+        const result = await addCat(formData);
         if (result.success) {
             // Go back to home page after adding cat
             navigate('/', { 
@@ -32,11 +32,12 @@ function AddCat() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div style={{ minHeight: '100vh' }}>
+
             <Header />
             {/* Breadcrumb nav */}
-            <div className="bg-white border-b">
-                <div className="max-w-7xl mx-auto px-4 py-3">
+            <div className="bg-white border-b" style={{ marginTop: '20px' }}>
+                <div style={{ maxWidth: '900px', margin: '0 auto', padding: '12px 16px' }}>
                     <button
                       onClick={() => navigate('/')}
                       className="flex items-center gap-2 transition-colors"

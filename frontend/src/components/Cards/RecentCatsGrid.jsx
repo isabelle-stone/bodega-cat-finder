@@ -26,15 +26,18 @@ function RecentCatsGrid({ cats, onCatClick, limit }) {
         return (
           <div
             key={cat.id}
-            className="shadow-lg hover:shadow-xl cursor-pointer transform hover:scale-105 transition-all duration-300"
-            onClick={() => onCatClick && onCatClick(cat)}
             style={{ 
               backgroundColor: '#FFCB61',
               borderRadius: '16px',
               width: '180px',
               flexBasis: 'calc(33.333% - 16px)',
-              maxWidth: '180px'
+              maxWidth: '180px',
+              boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2)',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
             }}
+            onClick={() => onCatClick && onCatClick(cat)}
+
           >
             {/* Cat Image */}
             <div 

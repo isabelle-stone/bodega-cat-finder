@@ -4,7 +4,9 @@
  * api.jsx
  */
 
-const API_BASE = 'https://bodega-cat-finder-wb0q.onrender.com/api';
+const API_BASE = process.env.NODE_ENV === 'production' 
+    ? 'https://bodega-cat-finder-wb0q.onrender.com/api'
+    : 'http://localhost:5050/api';
 
 export const catAPI = {
     

@@ -20,7 +20,15 @@ function CatCard({ cat, onClick }) {
 
   return (
     <div 
-      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+      style={{
+        backgroundColor: 'white',
+        borderRadius: '8px',
+        boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+        border: '1px solid #e5e7eb',
+        overflow: 'hidden',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease'
+      }}
       onClick={() => onClick && onClick(cat)}
     >
       <div className="aspect-square overflow-hidden">

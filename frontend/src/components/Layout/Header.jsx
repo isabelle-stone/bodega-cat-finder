@@ -16,13 +16,14 @@ function Header() {
       padding: '40px 20px',
       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
     }}>
-      <div style={{
-        maxWidth: '900px',
+      <div className="header-container" style={{
+        maxWidth: '900px !important',
         margin: '0 auto',
         background: 'white',
         borderRadius: '20px',
         padding: '40px 32px',
         textAlign: 'center'  
+        
       }}>
         <div 
           onClick={() => navigate('/')}

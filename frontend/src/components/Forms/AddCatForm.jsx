@@ -4,7 +4,7 @@
  * Form for adding new cats with image cropping
  */
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Upload, MapPin, Camera, X } from 'lucide-react';
 import ImageCropper from './ImageCropper';
 import { catAPI } from '../../services/api';
@@ -18,6 +18,7 @@ function AddCatForm({ onCatAdded, onCancel }) {
     longitude: ''
   });
   
+  const isSubmittingRef = useRef(false);
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
@@ -106,10 +107,24 @@ function AddCatForm({ onCatAdded, onCancel }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
+    // Prevent double submission
+    if (isSubmittingRef.current) {
+      console.log('Already submitting (ref check), preventing duplicate');
+      return;
+    }
+    isSubmittingRef.current = true; 
     setError('');
     setIsSubmitting(true);
 
+    // Add a small delay to ensure state update
+    await new Promise(resolve => setTimeout(resolve, 10));
+
     try {
+      console.log('Cropped image:', croppedImage);
+      console.log('Cropped image type:', typeof croppedImage);
+      console.log('Cropped image size:', croppedImage?.size);
+
       // Validation
       if (!croppedImage) {
         throw new Error('Please add a photo of the cat');
@@ -126,12 +141,9 @@ function AddCatForm({ onCatAdded, onCancel }) {
       submitData.append('latitude', formData.latitude);
       submitData.append('longitude', formData.longitude);
       submitData.append('image', croppedImage, 'cat-photo.jpg');
-
-      // Submit to API
-      const result = await catAPI.addCat(submitData);
       
-      // Success..
-      onCatAdded && onCatAdded(result);
+      // Submit to parent handler
+      onCatAdded && onCatAdded(submitData);
       
       // Reset form
       setFormData({
@@ -147,7 +159,9 @@ function AddCatForm({ onCatAdded, onCancel }) {
       setError(err.message);
     } finally {
       setIsSubmitting(false);
+      isSubmittingRef.current = false;
     }
+
   };
 
   return (
@@ -239,17 +253,20 @@ function AddCatForm({ onCatAdded, onCancel }) {
                     right: '8px',
                     backgroundColor: 'rgba(0, 0, 0, 0.7)',
                     color: 'white',
-                    border: 'none',
+                    border: '2px solid white',
                     borderRadius: '50%',
                     width: '30px',
                     height: '30px',
+                    padding: '0',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    transition: 'all 0.2s ease'
                   }}
+                  title="Remove image"
                 >
-                  <X size={16} />
+                  ×
                 </button>
               </div>
             )}

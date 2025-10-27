@@ -96,7 +96,7 @@ function Home() {
       </div>
 
       {/* Main content */}
-      <main className="max-w-7xl mx-auto px-4 py-6">
+      <main className="max-w-7xl mx-auto px-4 py-6" style={{ marginTop: '20px' }}>
         {viewMode === 'map' ? (
           /* Map */
           <div className="space-y-6">
@@ -154,10 +154,12 @@ function Home() {
               </div>
               
               {cats.length > 0 ? (
+                <div style={{ marginTop: '24px' }}>
                 <RecentCatsGrid 
                   cats={cats} 
                   onCatClick={handleCatClick}
                 />
+               </div>
               ) : (
                 <div className="text-center py-12">
                   <p className="text-gray-500 text-lg mb-4">No cats found yet!</p>
